@@ -1,6 +1,6 @@
-<nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
+<nav class="navbar navbar-expand-md navbar-dark sticky-top nav">
   <div class="container">
-    <a href="{{ url_for('views.static_html', route='/') }}" class="navbar-brand">
+    <a href="{{ url_for('views.static_html', route='/') }}" class="navbar-brand brand">
       {% if Configs.ctf_logo %}
         <img
             class="img-responsive ctf_logo"
@@ -21,7 +21,7 @@
     </button>
 
     <div class="collapse navbar-collapse" id="base-navbars">
-      <ul class="navbar-nav me-auto">
+      <ul class="navbar-nav nav-links">
         {% for page in Plugins.user_menu_pages %}
           <li class="nav-item">
             <a class="nav-link" href="{{ page.route }}" {% if page.link_target %}target="{{ page.link_target }}"{% endif %}>
@@ -63,7 +63,7 @@
 
       <hr class="d-sm-flex d-md-flex d-lg-none">
 
-      <ul class="navbar-nav ms-md-auto d-block d-sm-flex d-md-flex">
+      <ul class="navbar-nav ms-md-auto d-block d-sm-flex d-md-flex nav-links nav-actions">
         {% if authed() %}
 
           {% if is_admin() %}
@@ -147,7 +147,7 @@
 
           {% if registration_visible() %}
             <li class="nav-item">
-              <a class="nav-link" href="{{ url_for('auth.register') }}">
+              <a class="nav-link btn btn-primary btn-sm" href="{{ url_for('auth.register') }}">
                 <span data-bs-toggle="tooltip" data-bs-placement="bottom" title="{% trans %}Register{% endtrans %}">
                   <i class="fas fa-user-plus d-none d-md-inline d-lg-none"></i>
                 </span>

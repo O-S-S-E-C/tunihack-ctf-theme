@@ -13,14 +13,14 @@
 
         {% with form = Forms.teams.TeamJoinForm() %}
           <form method="POST">
-            <div class="mb-3">
+            <div class="mb-3 field">
               {{ form.name.label(class="form-label") }}
-              {{ form.name(class="form-control") }}
+              {{ form.name(class="form-control input") }}
             </div>
 
-            <div class="mb-3">
+            <div class="mb-3 field">
               {{ form.password.label(class="form-label") }}
-              {{ form.password(class="form-control") }}
+              {{ form.password(class="form-control input") }}
             </div>
 
             <div class="row pt-3">

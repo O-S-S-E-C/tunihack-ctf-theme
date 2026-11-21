@@ -17,7 +17,7 @@
 
               <div class="mb-2">
                 <b>{{ form.name.label(class="mb-2") }}</b>
-                {{ form.name(class="form-control") }}
+                {{ form.name(class="form-control input") }}
                 <small class="form-text text-muted">
                   {{ form.name.description }}
                 </small>
@@ -25,7 +25,7 @@
 
               <div class="mb-2">
                 <b>{{ form.password.label(class="mb-2") }}</b>
-                {{ form.password(class="form-control") }}
+                {{ form.password(class="form-control input") }}
                 <small class="form-text text-muted">
                   {{ form.password.description }}
                 </small>
@@ -33,7 +33,7 @@
 
               <div class="mb-2">
                 <b>{{ form.confirm.label(class="mb-2") }}</b>
-                {{ form.confirm(class="form-control") }}
+                {{ form.confirm(class="form-control input") }}
                 <small class="form-text text-muted">
                   {{ form.confirm.description }}
                 </small>
@@ -41,7 +41,7 @@
 
               <div class="mb-2">
                 <b>{{ form.website.label(class="mb-2") }}</b>
-                {{ form.website(class="form-control") }}
+                {{ form.website(class="form-control input") }}
                 <small class="form-text text-muted">
                   {{ form.website.description }}
                 </small>
@@ -49,7 +49,7 @@
 
               <div class="mb-2">
                 <b>{{ form.affiliation.label(class="mb-2") }}</b>
-                {{ form.affiliation(class="form-control") }}
+                {{ form.affiliation(class="form-control input") }}
                 <small class="form-text text-muted">
                   {{ form.affiliation.description }}
                 </small>
@@ -57,7 +57,7 @@
 
               <div class="mb-2">
                 <b>{{ form.country.label(class="mb-2") }}</b>
-                {{ form.country(class="form-select") }}
+                {{ form.country(class="form-select input") }}
                 <small class="form-text text-muted">
                   {{ form.country.description }}
                 </small>
@@ -114,7 +114,7 @@
                   {# Append members to the select choices #}
                   {% set _ = form.captain_id.choices.append((member.id, member.name)) %}
                 {% endfor %}
-                {{ form.captain_id(class="form-select mb-2") }}
+                {{ form.captain_id(class="form-select input mb-2") }}
               </div>
               <div id="results">
                 <div
@@ -160,7 +160,7 @@
                 <b>{{ form.link.label(class="form-label") }}</b>
 
                 <div class="input-group mb-3">
-                  {{ form.link(id="team-invite-link", class="form-control", **{"x-ref": "link", "x-bind:value": "$store.inviteToken"}) }}
+                  {{ form.link(id="team-invite-link", class="form-control input", **{"x-ref": "link", "x-bind:value": "$store.inviteToken"}) }}
 
                   <button class="btn btn-outline-secondary px-3" type="button" @click="copy()">
                     <i class="fas fa-clipboard"></i>
@@ -323,7 +323,7 @@
     <div class="row min-vh-25">
       <div class="col-md-12">
         <h3>{% trans %}Members{% endtrans %}</h3>
-        <table class="table table-striped align-middle">
+        <table class="table board align-middle">
           <thead>
           <tr>
             <th>{% trans %}User Name{% endtrans %}</th>
@@ -382,7 +382,7 @@
       <div class="row">
         <div class="col-md-12">
           <h3>{% trans %}Solves{% endtrans %}</h3>
-          <table class="table table-striped align-middle">
+          <table class="table board align-middle">
             <thead>
             <tr>
               <th>{% trans %}Challenge{% endtrans %}</th>

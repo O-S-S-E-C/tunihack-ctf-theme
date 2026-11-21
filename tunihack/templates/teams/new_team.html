@@ -14,13 +14,13 @@
         {% with form = Forms.teams.TeamRegisterForm() %}
           {% from "macros/forms.html" import render_extra_fields %}
           <form method="POST">
-            <div class="mb-3">
+            <div class="mb-3 field">
               <b>{{ form.name.label(class="form-label") }}</b>
-              {{ form.name(class="form-control") }}
+              {{ form.name(class="form-control input") }}
             </div>
-            <div class="mb-3">
+            <div class="mb-3 field">
               <b>{{ form.password.label(class="form-label") }}</b>
-              {{ form.password(class="form-control") }}
+              {{ form.password(class="form-control input") }}
             </div>
 
             {{ render_extra_fields(form.extra) }}

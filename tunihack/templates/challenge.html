@@ -1,6 +1,6 @@
 <div :class="getStyles()" role="document" x-data="Challenge" x-init='id = {{ challenge.id }}; max_attempts = {{ max_attempts }}; attempts = {{ attempts }}; solved_by_me = {{ solved_by_me | tojson }}; ratingValue = {{ (rating.get('value') if rating else None) | tojson }}; ratingReview = {{ (rating.get('review', '') if rating else None) | tojson }};'>
-  <div class="modal-content">
-    <div class="modal-body py-4 px-4 px-sm-5">
+  <div class="modal-content holo-modal">
+    <div class="modal-body">
 
       <div>
         <button type="button" class="btn-close float-end" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -56,10 +56,10 @@
 
 
             {% if tags %}
-              <div class="challenge-tags text-center pt-2 pb-3">
+              <div class="challenge-tags tags text-center pt-2 pb-3">
                 {% block tags %}
                   {% for tag in tags %}
-                    <span class="challenge-tag badge bg-info">{{ tag }}</span>
+                    <span class="challenge-tag tag badge bg-info">{{ tag }}</span>
                   {% endfor %}
                 {% endblock %}
               </div>
@@ -168,12 +168,15 @@
                       id="challenge-id" class="challenge-id" type="hidden"
                       value="{{ challenge.id }}"
                   >
-                  <input
-                      id="challenge-input" class="challenge-input form-control"
-                      type="text" name="submission"
-                      @keyup.enter="submitChallenge()"
-                      placeholder="{% trans %}Flag{% endtrans %}" x-model="submission"
-                  >
+                  <div class="flag">
+                    <span aria-hidden="true">flag&gt;</span>
+                    <input
+                        id="challenge-input" class="challenge-input form-control input"
+                        type="text" name="submission"
+                        @keyup.enter="submitChallenge()"
+                        placeholder="{% trans %}Flag{% endtrans %}" x-model="submission"
+                    >
+                  </div>
                 {% endblock %}
               </div>
 
@@ -181,7 +184,7 @@
                 {% block submit %}
                   <button
                       id="challenge-submit"
-                      class="challenge-submit btn btn-outline-secondary w-100 h-100" type="submit"
+                      class="challenge-submit btn btn-primary w-100 h-100" type="submit"
                       @click.debounce.500ms="submitChallenge()"
                   >
                     {% trans %}Submit{% endtrans %}
@@ -194,7 +197,8 @@
               <div class="col-12">
                 <template x-if="response">
                   {# This alert is re-used for all alerts, so it's important not to make it dismissible #}
-                  <div class="alert text-center w-100 mt-3"
+                  <div class="alert flag-msg text-center w-100 mt-3"
+                      :data-kind="response.data.status == 'correct' || response.data.status == 'already_solved' ? 'ok' : response.data.status == 'incorrect' ? 'bad' : 'wait'"
                       :class="{
                         'alert-success': response.data.status == 'correct',
                         'alert-info': response.data.status == 'already_solved',
@@ -292,7 +296,7 @@
           <div role="tabpanel" class="tab-pane fade" id="submissions">
             <div class="row">
               <div class="col-md-12">
-                <table class="table table-striped align-middle text-center">
+                <table class="table board align-middle text-center">
                   <thead>
                   <tr>
                     <th>{% trans %}Submission{% endtrans %}</th>
@@ -322,7 +326,7 @@
           <div role="tabpanel" class="tab-pane fade" id="solves">
             <div class="row">
               <div class="col-md-12">
-                <table class="table table-striped align-middle text-center">
+                <table class="table board align-middle text-center">
                   <thead>
                   <tr>
                     <th>{% trans %}Name{% endtrans %}</th>

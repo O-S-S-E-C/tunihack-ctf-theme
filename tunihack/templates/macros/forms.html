@@ -2,7 +2,7 @@
   {% for field in fields %}
     {% if field.field_type == "text" %}
 
-      <div class="mb-3">
+      <div class="mb-3 field">
         {% if show_labels %}
           <b>
             {{ field.label(class="form-label") }}
@@ -20,7 +20,7 @@
           {% endif %}
         {% endif %}
 
-        {{ field(class="form-control") }}
+        {{ field(class="form-control input") }}
 
         {% if show_descriptions %}
           {% if field.description %}
@@ -50,7 +50,7 @@
         {% endif %}
       </div>
 
-      <div class="mb-3 border border-1 p-3">
+      <div class="mb-3 field border border-1 p-3">
         <div class="form-check">
           {{ field(class="form-check-input") }}
           {{ field.label(class="form-check-label") }}
@@ -85,7 +85,7 @@
         {% endif %}
       </div>
 
-      {{ field(class="form-select") }}
+      {{ field(class="form-select input") }}
 
       {% if show_descriptions %}
         {% if field.description %}

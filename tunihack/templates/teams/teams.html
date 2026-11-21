@@ -22,11 +22,11 @@
         {% with form = Forms.teams.PublicTeamSearchForm(field=field, q=q) %}
           <form method="GET" class="row justify-content-around align-items-center">
             <div class="mb-3 col-md-2">
-              {{ form.field(class="form-select w-100") }}
+              {{ form.field(class="form-select input w-100") }}
             </div>
 
             <div class="mb-3 col-md-8">
-              {{ form.q(class="form-control w-100", placeholder="Search for matching teams") }}
+              {{ form.q(class="form-control input w-100", placeholder="Search for matching teams") }}
             </div>
 
             <div class="mb-3 col-md-2">
@@ -43,7 +43,7 @@
 
     <div class="row">
       <div class="col-md-12">
-        <table class="table table-striped align-middle">
+        <table class="table board align-middle">
           <thead>
           <tr>
             <th class="text-md-start">{% trans %}Team{% endtrans %}</th>

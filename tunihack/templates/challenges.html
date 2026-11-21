@@ -42,11 +42,13 @@
             </div>
 
             <div class="category-challenges d-flex flex-column">
-              <div class="challenges-row row">
+              <div class="challenges-row row plates">
                 <template x-for="(c, idx) in getChallenges(category)" :key="c.id">
                   <div class="col-sm-6 col-md-4 col-lg-3 my-3">
                     <button
-                        class="challenge-button btn btn-dark w-100 h-100"
+                        class="challenge-button plate btn btn-dark w-100 h-100"
+                        :data-state="c.solved_by_me ? 'solved' : 'open'"
+                        :data-cat="c.category.toLowerCase()"
                         :class="[
                           c.solved_by_me ? 'challenge-solved' : '',
                           ...c.tags.map((tag) => `tag-${tag.value.replace(/ /g, '-')}`),
@@ -55,8 +57,12 @@
                     >
 
                       <div class="challenge-inner my-3">
+                        <span class="plate-cat" x-text="c.category"></span>
                         <p x-text="c.name"></p>
-                        <span x-text="c.value"></span>
+                        <div class="plate-foot">
+                          <span class="plate-state"><i class="fas fa-check-circle" aria-hidden="true"></i> Solved</span>
+                          <span class="pts" x-text="c.value"></span>
+                        </div>
                       </div>
                     </button>
                   </div>

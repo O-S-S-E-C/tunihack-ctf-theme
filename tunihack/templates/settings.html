@@ -41,43 +41,43 @@
                   class="form-horizontal"
               >
 
-                <div class="mb-3">
+                <div class="mb-3 field">
                   <b>{{ form.name.label(class="form-label") }}</b>
                   {{ form.name(class="form-control", value=name) }}
                 </div>
 
-                <div class="mb-3">
+                <div class="mb-3 field">
                   <b>{{ form.email.label(class="form-label") }}</b>
                   {{ form.email(class="form-control", value=email) }}
                 </div>
 
-                <div class="mb-3">
+                <div class="mb-3 field">
                   <b>{{ form.language.label(class="form-label") }}</b>
                   {{ form.language(class="form-select", value=language) }}
                 </div>
 
                 <hr>
 
-                <div class="mb-3">
+                <div class="mb-3 field">
                   <b>{{ form.confirm.label(class="form-label") }}</b>
                   {{ form.confirm(class="form-control") }}
                 </div>
-                <div class="mb-3">
+                <div class="mb-3 field">
                   <b>{{ form.password.label(class="form-label") }}</b>
                   {{ form.password(class="form-control") }}
                 </div>
 
                 <hr>
 
-                <div class="mb-3">
+                <div class="mb-3 field">
                   <b>{{ form.affiliation.label(class="form-label") }}</b>
                   {{ form.affiliation(class="form-control", value=affiliation or "") }}
                 </div>
-                <div class="mb-3">
+                <div class="mb-3 field">
                   <b>{{ form.website.label(class="form-label") }}</b>
                   {{ form.website(class="form-control", value=website or "") }}
                 </div>
-                <div class="mb-3">
+                <div class="mb-3 field">
                   <b>{{ form.country.label(class="form-label") }}</b>
                   {{ form.country(class="form-select", value=country) }}
                 </div>
@@ -111,7 +111,7 @@
                   </template>
                 </div>
 
-                <div class="mb-3">
+                <div class="mb-3 field">
                   {{ form.submit(class="btn btn-primary float-end px-4") }}
                 </div>
               </form>
@@ -218,7 +218,7 @@
                   </div>
                 </div>
 
-                <table class="table table-striped align-middle">
+                <table class="table board align-middle">
                   <thead>
                   <tr>
                     <th class="text-center">{% trans %}Created{% endtrans %}</th>
