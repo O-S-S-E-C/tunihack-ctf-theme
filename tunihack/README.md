@@ -1,56 +1,51 @@
-# core-beta
+# TuniHack 12.0 CTFd theme
 
-Rewritten version of the CTFd core theme to use Bootstrap 5, Alpine.js, and vite to improve upon the existing CTFd theme structure.
+This is a presentation layer for the CTFd 3.x core-beta theme. The existing CTFd routes,
+Jinja blocks, APIs, challenge interactions, notifications, and plugin hooks remain in place.
 
-## Subtree Installation
+## Structure
 
-### Add repo to themes folder
+- `templates/` contains the core-beta Jinja templates. `page.html` adds the event hero to the
+  root page; `components/navbar.html` keeps the existing menu and changes its positioning.
+- `assets/scss/main.scss` loads Bootstrap and the theme styles.
+- `assets/scss/includes/theme/` contains the palette, base styles, shared components, and page
+  layouts.
+- `assets/img/logo/` contains the supplied TuniHack marks and mascot. Vite copies optimized
+  variants into `static/img/logo/`; oversized poster and emblem PNG originals stay source-only.
+- `static/` contains the built files served by CTFd. Run `npm run build` after changing SCSS.
 
-```
-git subtree add --prefix CTFd/themes/core-beta git@github.com:CTFd/core-beta.git main --squash
-```
+## Changing the colors
 
-### Pull latest changes to subtree
+Edit the custom properties in `assets/scss/includes/theme/_tokens.scss`. The page and component
+styles refer to these variables, so changing the palette there updates the whole theme. Rebuild
+the assets with `npm run build` before deploying.
 
-```
-git subtree pull --prefix CTFd/themes/core-beta git@github.com:CTFd/core-beta.git main --squash
-```
+## Swapping the logo or mascot
 
-### Subtree Gotcha
+Set the CTFd logo in Admin → Config → Appearance; the navbar uses the configured logo and falls
+back to the CTF name. To replace the home illustration, put the new transparent PNG, WebP, or SVG
+in `assets/img/logo/` and update the image path in `templates/page.html`. Keep the image close to
+the current 425 × 544 px mascot dimensions, or use a similarly proportioned transparent asset.
+Run the Vite build to copy it to `static/`.
 
-Make sure to use Merge Commits when dealing with the subtree here. For some reason Github's squash and commit uses the wrong line ending which causes issues with the subtree script: https://stackoverflow.com/a/47190256.
+## Pages and template overrides
 
-## Creating Custom Theme (based on core-beta)
+The shared styles cover the core-beta templates for the home page, challenges and challenge
+modal, scoreboard, login, registration, reset password, notifications, settings, teams, users,
+profiles, and error pages. The markup changes in this pass are the home hero in
+`templates/page.html` and sticky positioning in `templates/components/navbar.html`. The
+scoreboard chart color palette and axis styling are set in
+`assets/js/utils/graphs/echarts/scoreboard.js`; chart data and behavior are unchanged.
 
-To create a custom theme based on the core-beta one, here are the steps to follow:
+The bundled theme has a general neutral mascot, but no dedicated hologram/Tux projection image.
+For the reference look, provide a transparent 800 × 1000 px WebP or PNG Tux hologram. The cube
+accent and base rings are drawn with CSS, so separate wireframe assets are optional.
+Inter, Barlow Condensed, and JetBrains Mono font files were also not present, so the styles use
+system fallbacks and the bundled local Lato font where available. Add self-hosted WOFF2 files to
+`static/fonts/` and declare them with `font-display: swap` to match the requested typography.
 
-1. Clone core-beta theme locally to a seperate folder
+## Build and verification
 
-   ```
-   git clone https://github.com/CTFd/core-beta.git custom-theme
-   ```
-
-   To clarify the structure of the project, the `./assets` folder contains the uncompiled source files (the ones you can modify), while the `./static` directory contains the compiled ones.
-
-2. Install [Yarn](https://classic.yarnpkg.com/en/) following the [official installation guides](https://classic.yarnpkg.com/en/docs/install).
-
-   - **Yarn** is a dependency management tool used to install and manage project packages
-   - **[Vite](https://vite.dev/guide/)** handles the frontend tooling in CTFd by building optimized assets that are served through Flask.
-
-3. Run `yarn install` in the root of `custom-theme` folder to install the necessary Node packages including `vite`.
-
-4. Run the appropriate yarn build mode:
-
-   - Run `yarn dev` (this will run `vite build --watch`) while developing the theme.
-   - Run `yarn build` (which will run `vite build`) for a one-time build.
-     Vite allows you to preview changes instantly with hot reloading.
-
-5. Now, you can start your modifications in the `assets` folder. Each time you save, Vite will automatically recompile everything (assuming you are using `yarn dev`), and you can directly see the result by importing your compiled theme into a CTFd instance.
-   Note: You do not need the `node_modules` folder, you can simply zip the theme directory without it.
-
-6. When you are ready you can use `yarn build` to build the production copy of your theme.
-
-## Todo
-
-- Document how we are using Vite
-- Create a cookie cutter template package to use with Vite
+Run `npm run build` from this directory to produce the deployable `static/` assets. This checkout
+does not include `node_modules` or a Docker Compose file, so a local CTFd run and browser-based
+page verification have not been performed here.

@@ -17,6 +17,11 @@
 @use "includes/icons/award-icons";
 @use "includes/icons/flag-icons";
 
+@use "includes/theme/tokens";
+@use "includes/theme/base";
+@use "includes/theme/components";
+@use "includes/theme/pages";
+
 h1,
 h2 {
   font-weight: 500;

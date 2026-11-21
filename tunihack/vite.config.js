@@ -36,8 +36,19 @@ export default defineConfig({
               dest: "static/webfonts",
             },
             {
-              src: "./assets/img/**",
+              src: "./assets/img/*",
               dest: "static/img",
+              onlyFiles: true,
+            },
+            {
+              src: "./assets/img/logo/**/*",
+              dest: "static/img/logo",
+              onlyFiles: true,
+              ignore: [
+                "**/TuniHack Poster.png",
+                "**/TuniHackWordmark.png",
+                "**/NeonTuniHackEmblem.png",
+              ],
             },
             {
               src: "./assets/sounds/**",

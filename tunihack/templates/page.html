@@ -1,6 +1,31 @@
 {% extends "base.html" %}
 
 {% block content %}
+  {% if request.path == '/' %}
+    <section class="th-hero container" aria-labelledby="th-hero-title">
+      <div class="th-hero-copy">
+        <p class="th-eyebrow">TUNIHACK · CAPTURE THE FLAG</p>
+        <h1 id="th-hero-title"><span>Tuni</span><span>Hack</span><span>12.0</span></h1>
+        <p class="th-hero-lede">Think clearly. Explore deeply. Find the flag.</p>
+        <div class="th-hero-actions">
+          {% if registration_visible() %}
+            <a class="btn btn-primary btn-lg" href="{{ url_for('auth.register') }}">Register now <span aria-hidden="true">→</span></a>
+          {% else %}
+            <a class="btn btn-primary btn-lg" href="{{ url_for('auth.login') }}">Sign in <span aria-hidden="true">→</span></a>
+          {% endif %}
+          <a class="btn btn-outline-light btn-lg" href="{{ url_for('challenges.listing') }}">Explore challenges</a>
+        </div>
+      </div>
+      <div class="th-hero-art" aria-hidden="true">
+        <div class="th-orbit th-orbit-one"></div>
+        <div class="th-orbit th-orbit-two"></div>
+        <div class="th-orbit th-orbit-three"></div>
+        <img src="/themes/tunihack/static/img/logo/neutral_mascot.png" alt="" fetchpriority="high">
+        <span class="th-wire th-wire-cube"></span>
+        <span class="th-wire th-wire-spark">✦</span>
+      </div>
+    </section>
+  {% endif %}
   <div class="container">
     {{ content | safe }}
   </div>

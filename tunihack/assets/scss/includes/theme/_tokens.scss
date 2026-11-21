@@ -1,0 +1,22 @@
+// TuniHack 12.0 palette and shared design tokens.
+:root {
+  color-scheme: dark;
+  --bg-0: #050914;
+  --bg-1: #081029;
+  --surface: rgba(10, 18, 45, 0.78);
+  --surface-solid: #0b1330;
+  --blue: #2563eb;
+  --blue-light: #60a5fa;
+  --cyan: #22d3ee;
+  --success: #34d399;
+  --warning: #fbbf24;
+  --danger: #f87171;
+  --text: #e8eefc;
+  --text-dim: #a5b3d1;
+  --border: rgba(96, 165, 250, 0.22);
+  --border-strong: rgba(34, 211, 238, 0.45);
+  --glow: 0 0 24px rgba(34, 211, 238, 0.2);
+  --radius-btn: 8px;
+  --radius-card: 14px;
+  --radius-pill: 999px;
+}

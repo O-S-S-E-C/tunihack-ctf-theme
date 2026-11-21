@@ -1,13 +1,17 @@
-import { colorHash } from "@ctfdio/ctfd-js/ui";
 import { mergeObjects } from "../../objects";
 import { cumulativeSum } from "../../math";
 import dayjs from "dayjs";
 
+const graphColors = ["#22d3ee", "#60a5fa", "#38bdf8", "#34d399", "#fbbf24"];
+
 export function getOption(mode, places, optionMerge) {
   let option = {
+    backgroundColor: "transparent",
+    textStyle: { color: "#a5b3d1" },
     title: {
       left: "center",
       text: "Top 10 " + (mode === "teams" ? "Teams" : "Users"),
+      textStyle: { color: "#e8eefc", fontWeight: 600 },
     },
     tooltip: {
       trigger: "axis",
@@ -21,6 +25,7 @@ export function getOption(mode, places, optionMerge) {
       align: "left",
       bottom: 35,
       data: [],
+      textStyle: { color: "#b8c7e2" },
     },
     toolbox: {
       feature: {
@@ -38,11 +43,17 @@ export function getOption(mode, places, optionMerge) {
         type: "time",
         boundaryGap: false,
         data: [],
+        axisLabel: { color: "#a5b3d1" },
+        axisLine: { lineStyle: { color: "rgba(96,165,250,.25)" } },
+        splitLine: { lineStyle: { color: "rgba(96,165,250,.10)" } },
       },
     ],
     yAxis: [
       {
         type: "value",
+        axisLabel: { color: "#a5b3d1" },
+        axisLine: { lineStyle: { color: "rgba(96,165,250,.25)" } },
+        splitLine: { lineStyle: { color: "rgba(96,165,250,.12)" } },
       },
     ],
     dataZoom: [
@@ -53,7 +64,7 @@ export function getOption(mode, places, optionMerge) {
         filterMode: "filter",
         height: 20,
         top: 35,
-        fillerColor: "rgba(233, 236, 241, 0.4)",
+        fillerColor: "rgba(34, 211, 238, 0.14)",
       },
     ],
     series: [],
@@ -86,7 +97,7 @@ export function getOption(mode, places, optionMerge) {
       },
       itemStyle: {
         normal: {
-          color: colorHash(places[teams[i]]["name"] + places[teams[i]]["id"]),
+          color: graphColors[i % graphColors.length],
         },
       },
       data: scores,
