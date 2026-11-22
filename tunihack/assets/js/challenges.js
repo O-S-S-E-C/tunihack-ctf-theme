@@ -19,6 +19,7 @@ function addTargetBlank(html) {
 window.Alpine = Alpine;
 
 Alpine.store("challenge", {
+  lastSolved: null,
   data: {
     view: "",
   },
@@ -79,6 +80,15 @@ Alpine.data("Challenge", () => ({
   ratingReview: "",
   ratingSubmitted: false,
   solved_by_me: false,
+  fx: "",
+
+  // Restart the CSS one-shot effect even if the same result happens twice in a row
+  async playFx(kind) {
+    this.fx = "";
+    await this.$nextTick();
+    await new Promise(resolve => requestAnimationFrame(resolve));
+    this.fx = kind;
+  },
 
   async init() {
     highlight();
@@ -222,6 +232,8 @@ Alpine.data("Challenge", () => ({
       return;
     }
 
+    const fxMap = { correct: "correct", incorrect: "incorrect", paused: "wait", ratelimited: "wait" };
+    this.playFx(fxMap[this.response.data.status] || "");
     await this.renderSubmissionResponse();
   },
 
@@ -231,6 +243,9 @@ Alpine.data("Challenge", () => ({
     if (status === "correct") {
       this.submission = "";
       this.solved_by_me = true;
+      const store = Alpine.store("challenge");
+      store.lastSolved = this.id;
+      setTimeout(() => { store.lastSolved = null; }, 3500);
     } else if (status === "already_solved") {
       this.solved_by_me = true;
     }

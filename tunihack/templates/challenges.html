@@ -53,6 +53,7 @@
                         :data-cat="c.category.toLowerCase()"
                         :class="[
                           c.solved_by_me ? 'challenge-solved' : '',
+                          $store.challenge.lastSolved === c.id ? 'just-solved' : '',
                           ...c.tags.map((tag) => `tag-${tag.value.replace(/ /g, '-')}`),
                         ];"
                         :value="c.id" @click="loadChallenge(c.id)"
@@ -63,6 +64,9 @@
                         <p x-text="c.name"></p>
                         <div class="plate-foot">
                           <span class="plate-state"><i class="fas fa-check-circle" aria-hidden="true"></i> Solved</span>
+                          <span class="plate-solves" x-show="c.solves !== undefined && c.solves !== null" x-cloak>
+                            <i class="fas fa-flag" aria-hidden="true"></i><span x-text="c.solves"></span>
+                          </span>
                           <span class="pts"><span x-text="c.value"></span><small>PTS</small></span>
                         </div>
                       </div>

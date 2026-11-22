@@ -32,14 +32,14 @@
 
         {% if Configs.account_visibility != 'admins' %}
           <li class="nav-item">
-            <a class="nav-link" href="{{ url_for('users.listing') }}">
+            <a class="nav-link{% if request.path.startswith(url_for('users.listing')) %} active{% endif %}" href="{{ url_for('users.listing') }}"{% if request.path.startswith(url_for('users.listing')) %} aria-current="page"{% endif %}>
               {% trans %}Users{% endtrans %}
             </a>
           </li>
 
           {% if Configs.user_mode == 'teams' %}
             <li class="nav-item">
-              <a class="nav-link" href="{{ url_for('teams.listing') }}">
+              <a class="nav-link{% if request.path.startswith(url_for('teams.listing')) %} active{% endif %}" href="{{ url_for('teams.listing') }}"{% if request.path.startswith(url_for('teams.listing')) %} aria-current="page"{% endif %}>
                 {% trans %}Teams{% endtrans %}
               </a>
             </li>
@@ -48,14 +48,14 @@
 
         {% if Configs.account_visibility != 'admins' and Configs.score_visibility != 'admins' %}
           <li class="nav-item">
-            <a class="nav-link" href="{{ url_for('scoreboard.listing') }}">
+            <a class="nav-link{% if request.path.startswith(url_for('scoreboard.listing')) %} active{% endif %}" href="{{ url_for('scoreboard.listing') }}"{% if request.path.startswith(url_for('scoreboard.listing')) %} aria-current="page"{% endif %}>
               {% trans %}Scoreboard{% endtrans %}
             </a>
           </li>
         {% endif %}
 
         <li class="nav-item">
-          <a class="nav-link" href="{{ url_for('challenges.listing') }}">
+          <a class="nav-link{% if request.path.startswith(url_for('challenges.listing')) %} active{% endif %}" href="{{ url_for('challenges.listing') }}"{% if request.path.startswith(url_for('challenges.listing')) %} aria-current="page"{% endif %}>
             {% trans %}Challenges{% endtrans %}
           </a>
         </li>
