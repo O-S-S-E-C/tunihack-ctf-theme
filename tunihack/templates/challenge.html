@@ -1,5 +1,5 @@
 <div :class="getStyles()" role="document" x-data="Challenge" x-init='id = {{ challenge.id }}; max_attempts = {{ max_attempts }}; attempts = {{ attempts }}; solved_by_me = {{ solved_by_me | tojson }}; ratingValue = {{ (rating.get('value') if rating else None) | tojson }}; ratingReview = {{ (rating.get('review', '') if rating else None) | tojson }};'>
-  <div class="modal-content holo-modal">
+  <div class="modal-content holo-modal challenge-modal">
     <div class="modal-body">
 
       <div>
@@ -47,27 +47,31 @@
       <div>
         <div class="tab-content">
           <div role="tabpanel" class="tab-pane fade show active" id="challenge">
-            <h2 class="challenge-name text-center pt-3">
-              {{ challenge.name }}
-            </h2>
-            <h3 class="challenge-value text-center">
-              {{ challenge.value }}
-            </h3>
-
-
-            {% if tags %}
-              <div class="challenge-tags tags text-center pt-2 pb-3">
+            <header class="challenge-overview">
+              <div class="challenge-overview-copy">
+                <h2 class="challenge-name">
+                  {{ challenge.name }}
+                </h2>
+                {% if tags %}
+                  <div class="challenge-tags tags">
                 {% block tags %}
                   {% for tag in tags %}
                     <span class="challenge-tag tag badge bg-info">{{ tag }}</span>
                   {% endfor %}
                 {% endblock %}
+                  </div>
+                {% endif %}
+                {% if challenge.byline %}
+                  <small class="challenge-attribution text-muted">
+                    {% block attribution %}{{ challenge.byline }}{% endblock %}
+                  </small>
+                {% endif %}
               </div>
-            {% endif %}
-
-            <small class="challenge-attribution text-center text-muted">
-              {% block attribution %}{{ challenge.byline }}{% endblock %}
-            </small>
+              <div class="challenge-points">
+                <span class="challenge-value">{{ challenge.value }}</span>
+                <span>POINTS</span>
+              </div>
+            </header>
 
             {% if Configs.challenge_ratings == "public" %}
             <small class="challenge-ratings text-center text-muted d-block">
@@ -85,10 +89,11 @@
             </small>
             {% endif %}
 
-            <span class="challenge-desc">{% block description %}{{ challenge.html }}{% endblock %}</span>
+            <div class="challenge-desc-panel">
+              <span class="challenge-desc">{% block description %}{{ challenge.html }}{% endblock %}</span>
 
-            {% if challenge.connection_info %}
-              <div class="mb-2">
+              {% if challenge.connection_info %}
+              <div class="challenge-endpoint">
                 <span class="challenge-connection-info">
                   {% block connection_info %}
                     {% set conn = challenge.connection_info %}
@@ -101,7 +106,8 @@
                   {% endblock %}
                 </span>
               </div>
-            {% endif %}
+              {% endif %}
+            </div>
 
             {% if hints %}
               <div class="challenge-hints hint-row row">
