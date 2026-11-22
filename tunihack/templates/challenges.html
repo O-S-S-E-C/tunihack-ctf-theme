@@ -16,8 +16,9 @@
       </div>
     </div>
 
-    <div 
-      x-data="ChallengeBoard" 
+    <div
+      class="challenge-board"
+      x-data="ChallengeBoard"
       @load-challenges.window="loadChallenges()" 
       @load-challenge.window="loadChallenge($event.detail)"
     >
@@ -36,17 +37,25 @@
 
       <div x-show="loaded">
         <template x-for="(category, idx) in getCategories()" :key="idx">
-          <div class="pt-5">
-            <div class="category-header mb-3">
-              <h3 x-text="category"></h3>
-            </div>
+          <section class="challenge-category">
+            <header class="category-header">
+              <div class="category-heading">
+                <span class="category-kicker">CHALLENGE CATEGORY</span>
+                <h2 x-text="category"></h2>
+              </div>
+              <span class="category-count">
+                <span x-text="getChallenges(category).length"></span>
+                <span> challenges</span>
+              </span>
+            </header>
 
-            <div class="category-challenges d-flex flex-column">
-              <div class="challenges-row row plates">
+            <div class="category-challenges">
+              <div class="challenge-grid">
                 <template x-for="(c, idx) in getChallenges(category)" :key="c.id">
-                  <div class="col-sm-6 col-md-4 col-lg-3 my-3">
+                  <div class="challenge-slot">
                     <button
-                        class="challenge-button plate btn btn-dark w-100 h-100"
+                        type="button"
+                        class="challenge-button plate"
                         :data-state="c.solved_by_me ? 'solved' : 'open'"
                         :data-cat="c.category.toLowerCase()"
                         :class="[
@@ -56,12 +65,13 @@
                         :value="c.id" @click="loadChallenge(c.id)"
                     >
 
-                      <div class="challenge-inner my-3">
+                      <div class="challenge-inner">
                         <span class="plate-cat" x-text="c.category"></span>
                         <p x-text="c.name"></p>
                         <div class="plate-foot">
                           <span class="plate-state"><i class="fas fa-check-circle" aria-hidden="true"></i> Solved</span>
-                          <span class="pts" x-text="c.value"></span>
+                          <span class="pts"><span x-text="c.value"></span><small>PTS</small></span>
+                          <span class="challenge-open" aria-hidden="true"><i class="fas fa-arrow-up-right-from-square"></i></span>
                         </div>
                       </div>
                     </button>
@@ -69,7 +79,7 @@
                 </template>
               </div>
             </div>
-          </div>
+          </section>
         </template>
       </div>
     </div>
