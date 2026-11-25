@@ -20,10 +20,11 @@
         <img src="/themes/tunihack/static/img/logo/tux-hologram-480.webp" alt="" fetchpriority="high">
       </div>
     </section>
+  {% else %}
+    <div class="container wrap">
+      {{ content | safe }}
+    </div>
   {% endif %}
-  <div class="container wrap">
-    {{ content | safe }}
-  </div>
 {% endblock %}
 
 {% block scripts %}
