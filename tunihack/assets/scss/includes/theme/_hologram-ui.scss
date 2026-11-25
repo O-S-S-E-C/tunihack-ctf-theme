@@ -405,8 +405,8 @@
 .challenge-layout {
   display: grid;
   grid-template-columns: minmax(0, 1.4fr) minmax(290px, 0.9fr);
-  gap: 16px 22px;
-  padding: 18px 22px 22px;
+  gap: 20px 24px;
+  padding: 20px 24px 24px;
 }
 .challenge-layout > .challenge-overview { grid-column: 1 / -1; }
 .challenge-overview {
@@ -415,8 +415,9 @@
   justify-content: space-between;
   gap: 24px;
   margin: 0;
-  padding: 0;
+  padding: 0 0 18px;
   border: 0;
+  border-bottom: 1px solid var(--line);
   background: none;
 }
 .challenge-overview-copy { min-width: 0; }
@@ -495,11 +496,15 @@
 /* flag console */
 .challenge-console {
   position: sticky;
-  top: 0;
+  top: 62px;
   align-self: start;
   border-radius: 6px;
-  background: rgba(2, 8, 26, 0.5);
-  box-shadow: inset 0 0 0 1px rgba(93, 232, 255, 0.24), 0 0 44px -22px rgba(93, 232, 255, 0.45);
+  background: rgba(2, 8, 26, 0.58);
+  box-shadow:
+    inset 0 0 0 1px rgba(93, 232, 255, 0.24),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 18px 40px -24px rgba(0, 0, 0, 0.7),
+    0 0 44px -22px rgba(93, 232, 255, 0.35);
 }
 .console-bar {
   display: flex;
@@ -571,7 +576,8 @@
 .challenge-console .flag-msg[data-kind="bad"]::before { content: "\f057"; }
 .challenge-console .flag-msg[data-kind="wait"] { color: var(--warn-hi); border-color: rgba(255, 193, 90, 0.5); background: rgba(255, 193, 90, 0.1); }
 .challenge-console .flag-msg[data-kind="wait"]::before { content: "\f017"; }
-.challenge-console .rating-row { margin: 0; padding: 0 16px 16px; }
+.challenge-console .console-next { display: grid; gap: 8px; }
+.challenge-console .console-next .btn.mt-3 { margin-top: 10px !important; }
 .challenge-modal .tab-pane:not(#challenge) { padding: 22px 28px 28px; }
 
 /* ------------------------------------------------- SUBMIT FEEDBACK FX ----- */
