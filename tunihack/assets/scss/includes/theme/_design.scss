@@ -1522,7 +1522,22 @@ body::before { animation: sky-drift 150s linear infinite; }
 .challenge-modal .challenge-hints summary { color: #a9d8ff; cursor: pointer; }
 .challenge-modal .challenge-hints details > div { padding-top: .75rem; color: #d2e1f2; }
 .challenge-modal .challenge-files { --bs-gutter-x: .6rem; }
-.challenge-modal .btn-file { color: #b8ddff; border-color: rgba(99,166,238,.2); background: rgba(22,59,105,.35); }
+.challenge-modal .btn-file {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  color: #b8ddff;
+  border-color: rgba(99,166,238,.2);
+  background: rgba(22,59,105,.35);
+}
+.challenge-modal .btn-file > i { flex: 0 0 auto; }
+.challenge-modal .btn-file > small {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 .challenge-modal .btn-file:hover { color: #fff; border-color: rgba(93,190,255,.55); background: rgba(34,109,194,.38); }
 .challenge-modal .submit-row {
   display: grid;
