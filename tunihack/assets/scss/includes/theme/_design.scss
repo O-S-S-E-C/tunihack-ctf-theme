@@ -1535,6 +1535,7 @@ body::before { animation: sky-drift 150s linear infinite; }
 .challenge-modal .btn-file > small {
   min-width: 0;
   overflow: hidden;
+  text-align: center;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
