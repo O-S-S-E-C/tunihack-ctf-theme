@@ -36,6 +36,10 @@ export default defineConfig({
               dest: "static/webfonts",
             },
             {
+              src: "./node_modules/@fontsource/oxanium/files/oxanium-latin-[67]00-normal.woff2",
+              dest: "static/webfonts",
+            },
+            {
               src: "./assets/img/*",
               dest: "static/img",
               onlyFiles: true,

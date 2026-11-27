@@ -28,6 +28,20 @@
   font-weight: 700;
   font-display: swap;
 }
+@font-face {
+  font-family: "Oxanium";
+  src: url("../webfonts/oxanium-latin-600-normal.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Oxanium";
+  src: url("../webfonts/oxanium-latin-700-normal.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
 
 :root {
   /* color */
@@ -48,6 +62,7 @@
   --f-display: "Unbounded", "Tuni Display", system-ui, sans-serif;
   --f-body: "Manrope", "Tuni Body", system-ui, sans-serif;
   --f-mono: "JetBrains Mono", ui-monospace, monospace;
+  --f-heading: "Oxanium", "Tuni Display", system-ui, sans-serif; /* page titles, category names */
   /* shape */
   --r-sm: 4px;
   --r-md: 8px;
@@ -1004,6 +1019,9 @@ body::before { animation: sky-drift 150s linear infinite; }
   pointer-events: none;
 }
 .jumbotron h1 {
+  font-family: var(--f-heading);
+  font-weight: 600;
+  letter-spacing: -.01em;
   text-shadow: 0 0 28px rgba(93,232,255,.2);
 }
 
@@ -1283,8 +1301,8 @@ body::before { animation: sky-drift 150s linear infinite; }
 .challenge-board .category-header h3 {
   margin: 0;
   color: #d9edff;
-  font: 700 1.2rem/1.25 var(--f-display);
-  letter-spacing: -.025em;
+  font: 700 1.2rem/1.25 var(--f-heading);
+  letter-spacing: 0;
 }
 .challenge-grid {
   display: grid;

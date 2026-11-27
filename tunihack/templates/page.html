@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 
 {% block content %}
+  {# Welcome page links: replace with the real URLs. #}
+  {% set discord_url = "https://discord.gg/JAt99Rv4a" %}
+  {% set club_url = "https://ossec.me" %}
+
   {% if request.path == '/' %}
     <section class="hero wrap" aria-labelledby="th-hero-title">
       <div class="hero-copy">
@@ -10,10 +14,21 @@
         <div class="hero-actions">
           {% if registration_visible() %}
             <a class="btn btn-primary" href="{{ url_for('auth.register') }}">Register now <span aria-hidden="true">→</span></a>
+            {% if not authed() %}
+              <a class="btn btn-ghost" href="{{ url_for('auth.login') }}">Login</a>
+            {% endif %}
           {% else %}
             <a class="btn btn-primary" href="{{ url_for('auth.login') }}">Sign in <span aria-hidden="true">→</span></a>
           {% endif %}
           <a class="btn btn-ghost" href="{{ url_for('challenges.listing') }}">Explore challenges</a>
+        </div>
+        <div class="hero-actions mt-3">
+          <a class="btn btn-ghost" href="{{ discord_url }}" target="_blank" rel="noopener">
+            <i class="fa-brands fa-discord" aria-hidden="true"></i> Join our Discord
+          </a>
+          <a class="btn btn-ghost" href="{{ club_url }}" target="_blank" rel="noopener">
+            <i class="fas fa-globe" aria-hidden="true"></i> Club website
+          </a>
         </div>
       </div>
       <div class="holo-stage" aria-hidden="true">

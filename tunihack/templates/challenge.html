@@ -139,27 +139,19 @@
             {% endif %}
 
             {% if files %}
-              <div class="row challenge-files text-center pb-3">
+              <div class="challenge-files">
                 {% for file in files %}
-                  <div class="col-md-4 col-sm-4 col-xs-12 file-button-wrapper d-block">
-                    {% set segments = file.split('/') %}
-                    {% set token = file.split('?') | last %}
-                    {% if token %}
-                      {% set filename = segments | last | replace("?" + token, "") %}
-                    {% else %}
-                      {% set filename = segments | last %}
-                    {% endif %}
-                    <a
-                        class="btn btn-info btn-file mb-1 d-inline-block px-2 w-100 text-truncate"
-                        href="{{ file }}"
-                        title="{{ filename }}"
-                    >
-                      <i class="fas fa-download"></i>
-                      <small>
-                        {{ filename }}
-                      </small>
-                    </a>
-                  </div>
+                  {% set segments = file.split('/') %}
+                  {% set token = file.split('?') | last %}
+                  {% if token %}
+                    {% set filename = segments | last | replace("?" + token, "") %}
+                  {% else %}
+                    {% set filename = segments | last %}
+                  {% endif %}
+                  <a class="btn btn-file" href="{{ file }}" title="{{ filename }}">
+                    <i class="fas fa-download" aria-hidden="true"></i>
+                    <span>{{ filename }}</span>
+                  </a>
                 {% endfor %}
               </div>
             {% endif %}
