@@ -139,19 +139,27 @@
             {% endif %}
 
             {% if files %}
-              <div class="challenge-files">
+              <div class="row challenge-files text-center pb-3">
                 {% for file in files %}
-                  {% set segments = file.split('/') %}
-                  {% set token = file.split('?') | last %}
-                  {% if token %}
-                    {% set filename = segments | last | replace("?" + token, "") %}
-                  {% else %}
-                    {% set filename = segments | last %}
-                  {% endif %}
-                  <a class="btn btn-file" href="{{ file }}" title="{{ filename }}">
-                    <i class="fas fa-download" aria-hidden="true"></i>
-                    <span>{{ filename }}</span>
-                  </a>
+                  <div class="col-md-4 col-sm-4 col-xs-12 file-button-wrapper d-block">
+                    {% set segments = file.split('/') %}
+                    {% set token = file.split('?') | last %}
+                    {% if token %}
+                      {% set filename = segments | last | replace("?" + token, "") %}
+                    {% else %}
+                      {% set filename = segments | last %}
+                    {% endif %}
+                    <a
+                        class="btn btn-info btn-file mb-1 d-inline-block px-2 w-100 text-truncate"
+                        href="{{ file }}"
+                        title="{{ filename }}"
+                    >
+                      <i class="fas fa-download"></i>
+                      <small>
+                        {{ filename }}
+                      </small>
+                    </a>
+                  </div>
                 {% endfor %}
               </div>
             {% endif %}
@@ -160,7 +168,7 @@
             </div>
 
             <aside class="challenge-console">
-              <div class="console-bar">{% trans %}Submit flag{% endtrans %}</div>
+              <div class="console-bar" aria-hidden="true"><i></i><i></i><i></i><span>submit_flag</span></div>
               <div class="console-body">
                 <template x-if="max_attempts > 0">
                   <p class="console-attempts">
