@@ -36,6 +36,10 @@ export default defineConfig({
               dest: "static/webfonts",
             },
             {
+              src: "./node_modules/@fontsource/raleway/files/raleway-latin-[78]00-normal.woff2",
+              dest: "static/webfonts",
+            },
+            {
               src: "./assets/img/*",
               dest: "static/img",
               onlyFiles: true,

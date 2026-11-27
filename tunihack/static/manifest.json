@@ -5,7 +5,7 @@
     "isEntry": true
   },
   "assets/js/page.js": {
-    "file": "assets/page.ba85720e.js",
+    "file": "assets/page.a201ba9a.js",
     "src": "assets/js/page.js",
     "isEntry": true,
     "imports": [
@@ -144,7 +144,7 @@
     ]
   },
   "assets/scss/main.scss": {
-    "file": "assets/main.3ea082ec.css",
+    "file": "assets/main.e5c5d3d3.css",
     "src": "assets/scss/main.scss",
     "isEntry": true
   }

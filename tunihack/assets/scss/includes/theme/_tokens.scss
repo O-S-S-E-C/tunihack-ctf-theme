@@ -1,22 +1,58 @@
-// TuniHack 12.0 palette and shared design tokens.
+// TuniHack design tokens. Font files are copied to static/webfonts by vite.config.js.
+
+@font-face {
+  font-family: "Lato";
+  src: url("../webfonts/lato-latin-400-normal.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Lato";
+  src: url("../webfonts/lato-latin-700-normal.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Raleway";
+  src: url("../webfonts/raleway-latin-700-normal.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Raleway";
+  src: url("../webfonts/raleway-latin-800-normal.woff2") format("woff2");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
-  color-scheme: dark;
-  --bg-0: #050914;
-  --bg-1: #081029;
-  --surface: rgba(10, 18, 45, 0.78);
-  --surface-solid: #0b1330;
-  --blue: #2563eb;
-  --blue-light: #60a5fa;
-  --cyan: #22d3ee;
-  --success: #34d399;
-  --warning: #fbbf24;
-  --danger: #f87171;
-  --text: #e8eefc;
-  --text-dim: #a5b3d1;
-  --border: rgba(96, 165, 250, 0.22);
-  --border-strong: rgba(34, 211, 238, 0.45);
-  --glow: 0 0 24px rgba(34, 211, 238, 0.2);
-  --radius-btn: 8px;
-  --radius-card: 14px;
-  --radius-pill: 999px;
+  --th-bg: #070b16;
+  --th-surface: #0d1424;
+  --th-surface-2: #121b2f;
+  --th-surface-3: #18233b;
+  --th-border: #1e2940;
+  --th-border-strong: #2d3b58;
+
+  --th-text: #dde6f3;
+  --th-text-strong: #f4f8ff;
+  --th-muted: #8794ab;
+
+  --th-accent: #5cc8ff;
+  --th-primary: #1f6feb;
+  --th-primary-hover: #3b82f6;
+  --th-ok: #3ddc97;
+  --th-bad: #ff5d73;
+  --th-warn: #f5b84a;
+
+  --th-radius: 10px;
+  --th-radius-sm: 6px;
+  --th-nav-h: 60px;
+  --th-ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+
+  --th-font-display: "Raleway", system-ui, sans-serif;
+  --th-font-mono: ui-monospace, "SFMono-Regular", "JetBrains Mono", "Cascadia Mono", Menlo, Consolas, "DejaVu Sans Mono", "Liberation Mono", monospace;
 }
