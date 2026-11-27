@@ -1,5 +1,6 @@
 <div :class="getStyles()" role="document" x-data="Challenge" x-init='id = {{ challenge.id }}; max_attempts = {{ max_attempts }}; attempts = {{ attempts }}; solved_by_me = {{ solved_by_me | tojson }};'>
-  <div class="modal-content challenge-modal" :data-fx="fx" :data-solved="solved_by_me ? 'true' : 'false'">
+  <div class="modal-content holo-modal challenge-modal" :data-fx="fx" :data-solved="solved_by_me ? 'true' : 'false'">
+    <div class="fx-layer" aria-hidden="true"><i class="fx-sweep"></i><i class="fx-ring"></i></div>
     <div class="modal-body">
 
       <div class="challenge-topbar">
@@ -147,7 +148,7 @@
                   {% else %}
                     {% set filename = segments | last %}
                   {% endif %}
-                  <a class="btn-file" href="{{ file }}" title="{{ filename }}">
+                  <a class="btn btn-file" href="{{ file }}" title="{{ filename }}">
                     <i class="fas fa-download" aria-hidden="true"></i>
                     <span>{{ filename }}</span>
                   </a>
@@ -159,7 +160,7 @@
             </div>
 
             <aside class="challenge-console">
-              <h3 class="console-title">{% trans %}Submit flag{% endtrans %}</h3>
+              <div class="console-bar">{% trans %}Submit flag{% endtrans %}</div>
               <div class="console-body">
                 <template x-if="max_attempts > 0">
                   <p class="console-attempts">
@@ -170,6 +171,7 @@
                 {% block input %}
                   <input id="challenge-id" class="challenge-id" type="hidden" value="{{ challenge.id }}">
                   <div class="flag">
+                    <span aria-hidden="true">flag&gt;</span>
                     <input
                         id="challenge-input" class="challenge-input form-control input"
                         type="text" name="submission" autocomplete="off" spellcheck="false"

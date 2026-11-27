@@ -1,24 +1,5 @@
 @use "bootstrap/scss/bootstrap" as * with (
-  $primary: #1f6feb,
-  $info: #5c728f,
-  $success: #2fbf7f,
-  $danger: #e5484d,
-  $warning: #f5b84a,
-  $body-bg-dark: #070b16,
-  $body-color-dark: #dde6f3,
-  $body-secondary-bg-dark: #0d1424,
-  $body-tertiary-bg-dark: #0a111f,
-  $border-color-dark: #1e2940,
-  $link-color-dark: #5cc8ff,
-  $link-hover-color-dark: #9bdcff,
-  $font-family-sans-serif: ("Lato", system-ui, -apple-system, "Segoe UI", sans-serif),
-  $font-family-monospace: (ui-monospace, "SFMono-Regular", "JetBrains Mono", "Cascadia Mono", Menlo, Consolas, "DejaVu Sans Mono", "Liberation Mono", monospace),
-  $headings-font-family: ("Raleway", system-ui, sans-serif),
-  $headings-font-weight: 800,
-  $border-radius: 0.5rem,
-  $border-radius-sm: 0.375rem,
-  $border-radius-lg: 0.75rem,
-  $modal-backdrop-opacity: 0.72
+  $info: #5c728f
 );
 
 @use "includes/components/graphs";
@@ -31,11 +12,8 @@
 @use "includes/icons/award-icons";
 @use "includes/icons/flag-icons";
 
-@use "includes/theme/tokens";
-@use "includes/theme/base";
-@use "includes/theme/components";
-@use "includes/theme/pages";
-@use "includes/theme/challenges";
+@use "includes/theme/design";
+@use "includes/theme/hologram-ui";
 
 $fa-font-path: "../webfonts";
 @import "~/@fortawesome/fontawesome-free/scss/fontawesome.scss";

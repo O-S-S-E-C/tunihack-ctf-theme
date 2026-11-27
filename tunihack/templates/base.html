@@ -8,9 +8,6 @@
 
   {{ meta | safe }}
 
-  <link rel="preload" href="/themes/tunihack/static/webfonts/lato-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="/themes/tunihack/static/webfonts/raleway-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
-
   {% block stylesheets %}
     {{ Assets.css("assets/scss/main.scss") }}
   {% endblock %}
@@ -41,6 +38,11 @@
   {{ Configs.theme_header }}
 </head>
 <body>
+<div class="sky" aria-hidden="true">
+  <span class="sky-stars sky-stars--far"></span>
+  <span class="sky-stars sky-stars--mid"></span>
+  <span class="sky-stars sky-stars--near"></span>
+</div>
 {% include "components/navbar.html" %}
 
 <main role="main">
